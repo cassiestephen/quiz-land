@@ -9,7 +9,7 @@ const Question = ({ questionInfo }: Props) => {
   const order = RandomOrdering([1, 2, 3, 4]);
 
   return (
-    <div className="fixed inset-0 bg-white flex items-center justify-center">
+    <div className="h-[700px] w-full flex items-center justify-centerr">
       <div className="bg-white p-2 rounded-xl shadow-2xl">
         <div className="mb-15">
           <h1 className="font-semibold text-left text-lg text-gray-700">

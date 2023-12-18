@@ -11,7 +11,8 @@ const Login = (props: Props) => {
   const [userPassword, setUserPassword] = useState<string>("");
 
   return (
-    <div className="fixed inset-0 bg-gray-700 flex items-center justify-center">
+    <div className="h-[600px] w-full flex items-center justify-center">
+  
       <div className="bg-white p-2 w-[300px] h-[330px] rounded-xl shadow-2xl flex flex-col">
         <div className="mt-0 h-1/8 w-1/8">
           <img src={quizLand} alt="" />
@@ -20,7 +21,7 @@ const Login = (props: Props) => {
           <input
             type="text"
             className="text-left border rounded-lg h-[30px] w-full mb-5 text-lg text-blue-700"
-            placeholder="email"
+            placeholder=" email"
             onChange={(event) => {
               setUserEmail(event.target.value);
             }}
@@ -28,7 +29,7 @@ const Login = (props: Props) => {
           <input
             type="text"
             className="text-left border rounded-lg w-full h-[30px] text-lg text-blue-700"
-            placeholder="password"
+            placeholder=" password"
             onChange={(event) => {
               setUserPassword(event.target.value);
             }}
@@ -43,6 +44,7 @@ const Login = (props: Props) => {
           </button>
         </div>
       </div>
+ 
     </div>
   );
 };

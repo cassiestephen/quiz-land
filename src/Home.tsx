@@ -1,16 +1,27 @@
 import mainGraphic from "./assets/mainGraphic.png";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 type Props = {}
 
 const Home = (props: Props) => {
+    let navigate = useNavigate();
+
+    const gotoLogin = () => {
+        navigate("/login");
+    }
+
+    const gotoQuizzes = () => {
+        navigate("/quizzes");
+    }
+
   return (
-    <section id="home" className="gap-16 ml-[200px] bg-gray-700 py-10 justify-center items center">
+    <section id="home" className="gap-16 ml-[200px] bg-gray-700 justify-center items-center">
 
       <motion.div
         className="flex w-5/6  justify-center items-center gap-[110px]"
       >
-        <div className="z-10 mt-32 w-1/2 ">
+        <div className="z-10 w-1/2 ">
           
           <motion.div
             className=""
@@ -45,10 +56,11 @@ const Home = (props: Props) => {
               visible: { opacity: 1, x: 0 },
             }}
           >
-            <button className="text-sm mt-1 border rounded-lg w-[150px] h-[35px] hover:bg-blue-500 hover:text-blue-700  text-gray-700 bg-blue-700">
+            <button onClick={gotoLogin}
+            className="text-sm mt-1 border rounded-lg w-[150px] h-[35px] hover:bg-blue-500 hover:text-blue-700  text-gray-700 bg-blue-700">
               Sign In
               </button>
-            <button
+            <button onClick={gotoQuizzes}
               className="text-sm mt-1 border rounded-lg w-[150px] h-[35px] bg-blue-500 text-blue-700  hover:text-gray-700 hover:bg-blue-700"
             >
               <p>Explore Quizzes</p>
@@ -56,7 +68,7 @@ const Home = (props: Props) => {
           </motion.div>
         </div>
         <div
-          className="flex basis-3/5 w-[800px] h-[600px]  justify-right"
+          className="flex basis-3/5 w-[800px] h-[600px] justify-right"
         >
           <img alt="home-pageGraphic" src={mainGraphic} />
         </div>

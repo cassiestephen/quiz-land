@@ -11,7 +11,7 @@ const Profile = ({setProfileOpen}: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const [seePassword, setSeePassword] = useState<boolean>(false);
   return (
-    <div className="fixed right-0 top-[30px] z-40 h-[450px] w-[300px] bg-white drop-shadow-xl border rounded-lg"> 
+    <div className="fixed right-0 top-[94px] z-40 h-[450px] w-[300px] bg-white drop-shadow-xl border rounded-lg"> 
       <div className="flex justify-end" onClick={(event) => {
             setProfileOpen(false);
           }}><CloseIcon  className=" mr-1 mt-1 text-gray-300"/></div>
