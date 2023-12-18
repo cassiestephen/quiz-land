@@ -8,7 +8,7 @@ import christmas5 from "../assets/christmasCreature/christmas5.png";
 import christmas6 from "../assets/christmasCreature/christmas6.png";
 
 
-const aboutChristmasQuiz: Array<AboutQuiz> = [
+export const aboutChristmasQuiz: Array<AboutQuiz> = [
     {
         name: "What Christmas Creature Are you?",
         image: christmasMain,
@@ -19,7 +19,7 @@ const aboutChristmasQuiz: Array<AboutQuiz> = [
     }
 ]
 
-const christmasQuiz: Array<QuizQuestion> =  [
+export const christmasQuiz: Array<QuizQuestion> =  [
     {
         question: "Which holiday is your favorite?",
         image: christmas1,
