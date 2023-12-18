@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Question from "../Question";
+import Question from "./Question";
 import { aboutChristmasQuiz, christmasQuiz } from "../quizzes/ChristmasQuiz";
 import { QuizQuestion, AboutQuiz, RandomOrdering } from "../shared/types";
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { QuizQuestion, RandomOrdering } from "./shared/types";
+import { QuizQuestion, RandomOrdering } from "../shared/types";
 
 type Props = {
   questionInfo: QuizQuestion;
