@@ -14,6 +14,21 @@ export interface AboutQuiz {
     choice2: string;
     choice3: string;
     choice4: string;
+    index: number,
+}
+
+
+export interface sysMess 
+{
+    role: string,
+    content: string
+}
+
+export interface Mess 
+{
+    message: string,
+    sentTime: string,
+    sender: string,
 }
 
 export function RandomOrdering<T>(array: T[]): T[] {

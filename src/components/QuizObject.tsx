@@ -11,9 +11,12 @@ type Props = {
 const QuizObject = ({ quizInfo, quizArray }: Props) => {
   const order: Array<Number> = RandomOrdering([0, 1, 2, 3, 4, 5]);
   const [num, setNum] = useState<Number>(order[0]);
+  const [index, setIndex] = useState<Number>(0);
+  const [started, setStarted] = useState<boolean>(false);
 
   return (
     <ul className="">
+
       {quizArray.map(
         (item: QuizQuestion, index) =>
           index === num && <Question questionInfo={item} />

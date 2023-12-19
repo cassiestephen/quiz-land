@@ -37,7 +37,7 @@ const Login = (props: Props) => {
           <button
             className="border bg-blue-500 h-[35px] text-blue-700 rounded-lg w-1/2 translate-x-[72px] mt-6 hover:text-gray-700 hover:bg-blue-700"
             onClick={() => {
-              dispatch(login({ email: userEmail, password: userPassword }));
+              dispatch(login({ email: userEmail, password: userPassword, currQuiz: -1, currQ: 0}));
             }}
           >
             Sign In

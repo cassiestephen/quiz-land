@@ -1,4 +1,5 @@
 
+
 type Props = {}
 
 const ChatGPTBot = (props: Props) => {
@@ -7,4 +8,4 @@ const ChatGPTBot = (props: Props) => {
   )
 }
 
-export default ChatGPTBot;
+export default ChatGPTBot
