@@ -10,11 +10,16 @@ export interface QuizQuestion {
 export interface AboutQuiz {
     name: string;
     image: string;
+    image1: string;
+    image2: string;
+    image3: string;
+    image4: string;
     choice1: string;
     choice2: string;
     choice3: string;
     choice4: string;
-    index: number,
+    index: number;
+    qLen: number;
 }
 
 
@@ -35,3 +40,4 @@ export function RandomOrdering<T>(array: T[]): T[] {
     return array.sort(() => Math.random() - 0.5);
   }
 
+  export const order = RandomOrdering<number>([1, 2, 3, 4]);

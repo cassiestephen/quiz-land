@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux"; // change state
 import { login } from "../../features/user";
 import quizLand from "../../assets/quizLand.png";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
@@ -9,6 +10,10 @@ const Login = (props: Props) => {
   const dispatch = useDispatch();
   const [userEmail, setUserEmail] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
+  let navigate = useNavigate();
+  const gotoQuizzes = () => {
+    navigate("/quizzes");
+}
 
   return (
     <div className="h-[600px] w-full flex items-center justify-center">
@@ -37,7 +42,9 @@ const Login = (props: Props) => {
           <button
             className="border bg-blue-500 h-[35px] text-blue-700 rounded-lg w-1/2 translate-x-[72px] mt-6 hover:text-gray-700 hover:bg-blue-700"
             onClick={() => {
-              dispatch(login({ email: userEmail, password: userPassword, currQuiz: -1, currQ: 0}));
+              dispatch(login({ email: userEmail, password: userPassword, currQuiz: -1, currQ: 0,
+                ans: []}));
+              gotoQuizzes();
             }}
           >
             Sign In

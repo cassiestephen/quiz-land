@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { login } from "./features/user";
 import quizLand from "./assets/quizLand.png";
 import QuizStatus from "./components/QuizStatus";
+import EndOfQuiz from "./components/EndOfQuiz";
 
 const App = () => {
   // keep track of whether or not logged in
@@ -97,6 +98,10 @@ const App = () => {
           <Route
             path="/quizzes"
             element={<QuizStatus />} /* path for home screen */
+          />
+          <Route
+            path="/endOfQuiz"
+            element={<EndOfQuiz />} /* path for home screen */
           />
           <Route
             path="/ai-chat"
