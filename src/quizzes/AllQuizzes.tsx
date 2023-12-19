@@ -7,12 +7,13 @@ import { AboutQuiz, QuizQuestion } from "../shared/types";
 
 // Christmas Quiz
 import { aboutChristmasQuiz, christmasQuiz } from "./ChristmasQuiz";
-
+import { aboutHorseQuiz, horseQuiz } from "./HorseQuiz";
+// horse quiz
 
 // Array of AboutQuiz Objects
 export const quizCards: Array<AboutQuiz> = [
 aboutChristmasQuiz,
-
+aboutHorseQuiz,
 ]
 
 
@@ -20,4 +21,5 @@ aboutChristmasQuiz,
 // 2d array of each quizzes's questions
 export const allQuizQuestions: Array<Array<QuizQuestion>> = [
 christmasQuiz,
+horseQuiz
 ]

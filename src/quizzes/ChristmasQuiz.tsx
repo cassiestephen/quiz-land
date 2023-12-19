@@ -1,7 +1,7 @@
 import {
   QuizQuestion,
   AboutQuiz,
-  RandomOrdering,
+
 } from "../shared/types";
 import christmasMain from "../assets/christmasCreature/christmasMain.png";
 import christmas1 from "../assets/christmasCreature/christmas1.png";
