@@ -69,7 +69,7 @@ export const aboutCityQuiz: AboutQuiz = {
     },
   
     {
-      question: "Choose a Water Vacation:",
+      question: "Choose a Vacation:",
       image: city5,
       choice1: "Miami",
       choice2: "Bahamas",

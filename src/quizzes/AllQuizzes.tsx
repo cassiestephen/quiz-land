@@ -6,6 +6,7 @@ import { AboutQuiz, QuizQuestion } from "../shared/types";
 // Quizzes:
 import { aboutChristmasQuiz, christmasQuiz } from "./ChristmasQuiz";
 import { aboutCityQuiz, cityQuiz } from "./CityQuiz";
+import { aboutHolidayQuiz, holidayQuiz } from "./HolidayQuiz";
 import { aboutHorseQuiz, horseQuiz } from "./HorseQuiz";
 
 
@@ -13,7 +14,8 @@ import { aboutHorseQuiz, horseQuiz } from "./HorseQuiz";
 export const quizCards: Array<AboutQuiz> = [
 aboutChristmasQuiz,
 aboutHorseQuiz,
-aboutCityQuiz
+aboutCityQuiz,
+aboutHolidayQuiz
 ]
 
 
@@ -22,5 +24,6 @@ aboutCityQuiz
 export const allQuizQuestions: Array<Array<QuizQuestion>> = [
 christmasQuiz,
 horseQuiz,
-cityQuiz
+cityQuiz,
+holidayQuiz
 ]
