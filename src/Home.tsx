@@ -14,9 +14,18 @@ const Home = (props: Props) => {
     const gotoQuizzes = () => {
         navigate("/quizzes");
     }
+    const gotoChatBot = () => {
+      navigate("/ai-chat");
+    }
 
   return (
     <section id="home" className="gap-16 ml-[200px] bg-gray-700 justify-center items-center">
+      <header className="flex translate-x-[-200px] items-center gap-2 w-[1700px] bg-yellow-400 h-[40px]">
+      <h2 className="text-3xl translate-x-[470px] text-red-600 font-bold">NEW!</h2>
+      <button onClick={gotoChatBot} 
+      className="text-sm translate-x-[470px] hover:text-decoration-line: hover:underline">
+        Check out our AI helper, QuizGPT for advice on making your very own quiz!</button>
+      </header>
 
       <motion.div
         className="flex w-5/6  justify-center items-center gap-[110px]"
