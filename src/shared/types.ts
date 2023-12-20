@@ -29,11 +29,12 @@ export interface sysMess
     content: string
 }
 
-export interface Mess 
+export interface messageObject 
 {
     message: string,
-    sentTime: string,
     sender: string,
+    direction?: string,
+    
 }
 
 export function RandomOrdering<T>(array: T[]): T[] {
