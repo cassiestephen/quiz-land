@@ -1,6 +1,5 @@
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
-  MainContainer,
   ChatContainer,
   MessageList,
   Message,
@@ -8,12 +7,9 @@ import {
   TypingIndicator,
   MessageModel,
 } from "@chatscope/chat-ui-kit-react";
-import { messageObject } from "../shared/types";
 import { useState } from "react";
 
 type Props = {};
-
-const API_KEY = "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";
 
 const ChatGPTBot = (props: Props) => {
   const [isTyping, setIsTyping] = useState<boolean>(false);
@@ -32,7 +28,7 @@ const ChatGPTBot = (props: Props) => {
       direction: "outgoing",
     };
 
-    const newMessages = [...messages, newMessage];
+    const newMessages = [...messages, newMessage]; // append new message to previous
 
     // update messages state
     setMessages(newMessages);
@@ -46,19 +42,17 @@ const ChatGPTBot = (props: Props) => {
 
   async function processAPIMessage(messageList: Array<MessageModel>) {
     let translatedApiMessages = messageList.map((messageObject) => {
-      let role = "";
+      let role = "user";
       if (messageObject.sender === "ChatGPT") {
         role = "assistant";
-      } else {
-        role = "user";
-      }
+      } 
       return { role: role, content: messageObject.message };
     });
 
     const systemMessage = {
       role: "system",
       content:
-        "Explain things like you're helping give creative advice to somebody who wants to create a BuzzFeed Quiz.",
+        "Explain things like you're helping give creative advice to somebody who wants to create a BuzzFeed style Quiz for Quiz Land.",
     };
 
     const apiRequestBody = {
@@ -70,16 +64,13 @@ const ChatGPTBot = (props: Props) => {
     await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: "Bearer " + API_KEY,
+        Authorization: "Bearer " + import.meta.env.VITE_API_KEY,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(apiRequestBody),
-    })
-      .then((data) => {
+    }).then((data) => {
         return data.json();
-      })
-      .then((data) => {
-        console.log(data);
+      }).then((data) => {
         setMessages([
           ...messageList,
           {
@@ -98,7 +89,7 @@ const ChatGPTBot = (props: Props) => {
         <ChatContainer>
           <MessageList
             typingIndicator={
-              isTyping && <TypingIndicator content="ChatGPT is Typing" />
+              isTyping && <TypingIndicator content="QuizGPT is Typing" />
             }
           >
             {messages.map((message, i) => {
