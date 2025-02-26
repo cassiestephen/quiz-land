@@ -1,6 +1,8 @@
 # all dependencies here
 fastapi
 uvicorn
+SQLAlchemy
+psycopg2-binary
 python-jose
 bcrypt
 python-multipart

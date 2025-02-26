@@ -5,8 +5,30 @@ from fastapi.security import OAuth2PasswordRequestForm
 import datetime
 from datetime import timedelta
 from auth import authenticate_user, create_access_token, get_current_user, ACCESS_TOKEN_EXPIRE_MINUTES
+from sqlalchemy.orm import Session
+from database import SessionLocal, engine
+from models import Base
+from crud import create_user, get_user
+from pydantic import BaseModel
+
+
 
 app = FastAPI()
+
+# ensure tables are created
+Base.metadata.create_all(bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+class UserCreate(BaseModel):
+    username: str
+    email: str
+    password: str
 
 # only allow frontend to access api
 origins = [
@@ -25,6 +47,16 @@ app.add_middleware(
 @app.get("/api/message")
 def get_message():
     return {"message": "Hello from FastAPI!"}
+
+
+@app.post("/register/")
+def register_user(user: UserCreate, db: Session = Depends(get_db)):
+    if get_user(db, user.username):
+        raise HTTPException(status_code=400, detail="Username already exists")
+    
+    new_user = create_user(db, user.username, user.email, user.password)
+    return {"message": "User created successfully", "user": new_user.username}
+
 
 
 @app.post("/token")
