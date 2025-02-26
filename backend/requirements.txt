@@ -1,4 +1,6 @@
 # all dependencies here
 fastapi
 uvicorn
-pydantic
+python-jose
+bcrypt
+python-multipart

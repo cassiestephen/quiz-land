@@ -9,6 +9,9 @@ import { useEffect } from "react";
 // outputs list of quizzes OR quiz in progress if you are currently working on one
 const QuizList = () => {
 const [message, setMessage] = useState('');
+const [username, setUsername] = useState("testuser");
+const [password, setPassword] = useState("password123");
+const [token, setToken] = useState("");
     
 const handleClick = async () => {
   try {
@@ -21,6 +24,24 @@ const handleClick = async () => {
   }
 
 }
+
+const handleValidatePW = async () => {
+  try 
+  {
+    const response = await axios.post('http://localhost:8000/token', {
+      username,
+      password, 
+    }, {
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+    });
+    setToken(response.data.access_token);
+    console.log("Login Successful");
+
+  }
+  catch (error) {
+    console.error("Login failed:", error);
+  }
+};
 
   return (
     <div className="h-[600px] w-full bg-gray-700">
@@ -36,6 +57,10 @@ const handleClick = async () => {
     <div>
       <button onClick={handleClick} className="text-sm mt-1 border rounded-lg w-[150px] h-[35px] bg-blue-500 text-blue-700  hover:text-gray-700 hover:bg-blue-700">click me</button>
       <p>{message}</p>
+    </div>
+    <div>
+      <button onClick={handleValidatePW} className="text-sm mt-1 border rounded-lg w-[150px] h-[35px] bg-blue-500 text-blue-700  hover:text-gray-700 hover:bg-blue-700">click me!!!</button>
+      <p>{token}</p>
     </div>
     </div>
   )
