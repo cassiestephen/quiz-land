@@ -3,8 +3,11 @@ import { useSelector } from "react-redux"; // access state
 import { useNavigate } from "react-router-dom";
 import { login } from "../features/user";
 import { quizCards } from "../quizzes/AllQuizzes";
+import axios from "axios";
+import { Logout } from "@mui/icons-material";
 
 type Props = {}
+const APIURL = 'http://localhost:8000';
 
 const EndOfQuiz = (props: Props) => {
     const dispatch = useDispatch();
@@ -57,9 +60,24 @@ const EndOfQuiz = (props: Props) => {
     }
 
     function exit(): void {
-        dispatch(login({ email: user.email, password: user.password, currQuiz: -1, currQ: 0,
-            ans: []}));
+        postResults();
+        user.result[user.currQuiz] = result()
+        dispatch(login({ email: user.email, password: user.password, currQuiz: -1, currQ: 0, token: user.token,
+            ans: [], result: user.result, token_expiry: user.token_expiry}));
         navigate("/quizzes");
+    }
+
+    const postResults = async () => {
+        try {
+            const response = await axios.post(`${APIURL}/complete-quiz`, {"username": user.username, 
+                "quiz_name": findResult(), "quiz_result": result(), "token": user.token
+            });
+            console.log(response.data.message);
+        }
+        catch (e: unknown) {
+            console.error("Post Results Failed:", e);
+            
+        }
     }
 
   return (

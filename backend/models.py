@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, JSON
 from database import Base
 
 class User(Base):
@@ -8,3 +8,6 @@ class User(Base):
     username = Column(String, unique=True, index=True)
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
+    access_token= Column(Integer)
+    access_token_expiry = Column(Integer)
+    results = Column(JSON, nullable=True)

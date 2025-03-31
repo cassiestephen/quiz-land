@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Profile from "./components/reduxSetup/Profile";
 import Login from "./components/reduxSetup/Login";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Home from "./Home";
 import ChatGPTBot from "./components/ChatGPTBot";
@@ -12,6 +12,11 @@ import { login } from "./features/user";
 import quizLand from "./assets/quizLand.png";
 import QuizStatus from "./components/QuizStatus";
 import EndOfQuiz from "./components/EndOfQuiz";
+import SignUp from "./components/reduxSetup/SignUp";
+import PaymentForm from "./components/Payment";
+import axios from "axios";
+
+const APIURL = 'http://localhost:8000';
 
 const App = () => {
   // keep track of whether or not logged in
@@ -20,7 +25,15 @@ const App = () => {
   let loggedIn: boolean = user.email !== "" && user.email !== "";
   const [profileOpen, setProfileOpen] = useState<boolean>(false); // have button in navBar toggle this
   const dispatch = useDispatch();
-  const logOut = () => {
+  const logOut = async () => {
+      try {
+          const response = await axios.post(`${APIURL}/logout`, {"username": user.username, "email": user.email, "password": user.password, 
+            "token": user.token, "token_expiry": user.token_expiry});
+          console.log(response.data.message);
+      }
+      catch (e: unknown) {
+          console.error("Logout Failed:", e);
+      }
     dispatch(login({ email: "", password: "" }));
   };
 
@@ -56,7 +69,7 @@ const App = () => {
                     {loggedIn && (
                       <button
                         className=""
-                        onClick={(event) => {
+                        onClick={() => {
                           setProfileOpen(!profileOpen);
                         }}
                       >
@@ -110,6 +123,14 @@ const App = () => {
           <Route
             path="/contact-us"
             element={<ContactUs />} /* path for home screen */
+          />
+          <Route
+            path="/create-account"
+            element={<SignUp/>} /* path for home screen */
+          />
+          <Route
+            path="/pay"
+            element={<PaymentForm/>} /* path for home screen */
           />
         </Routes>
       </Router>
